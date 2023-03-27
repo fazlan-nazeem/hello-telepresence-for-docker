@@ -57,7 +57,7 @@ Install the helm chart
 
 ```
 cd helm
-helm install -n hello-telepresence-for-docker app ./hello-telepresence-for-docker --debug
+helm install --create-namespace -n hello-telepresence-for-docker app ./hello-telepresence-for-docker --debug
 ```
 
 Get all details in that namespace
@@ -79,3 +79,11 @@ From the top-level of the repo
 1. `terraform destroy -auto-approve`
 2. Manually delete any load balancers associated with the cluster [in the web console](https://us-west-2.console.aws.amazon.com/ec2/home?region=us-west-2#LoadBalancers)
 3. `terraform destroy -auto-approve` again
+
+### Clearing DNS cache
+
+If needed...
+
+```
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+```
