@@ -4,8 +4,11 @@
 terraform {
 
   cloud {
+
+    organization = "demonstratum-cli"
+
     workspaces {
-      name = "learn-terraform-eks"
+      name = "demo-eks"
     }
   }
 
@@ -13,11 +16,6 @@ terraform {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 4.47.0"
-    }
-
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.4.3"
     }
 
     tls = {

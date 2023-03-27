@@ -1,3 +1,9 @@
+# macOS noise
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
+
 # Local .terraform directories
 **/.terraform/*
 
