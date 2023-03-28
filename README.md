@@ -1,6 +1,4 @@
-# Provision an EKS demo cluster with Terraform
-
-Instructions: https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks
+# Provision an EKS cluster with Terraform to demonstrate Telepresence for Docker
 
 ### AWS
 
@@ -72,7 +70,13 @@ Open the app
 open "http://$(kubectl get service -n hello-telepresence-for-docker -o json | jq -r '.items[].status.loadBalancer.ingress[].hostname')"
 ```
 
-### Deleting resources / cleanup
+### Deleting the app from Kubernetes
+
+```
+helm delete -n hello-telepresence-for-docker $(helm ls --namespace hello-telepresence-for-docker --short)
+```
+
+### Deleting the infrastructure from AWS
 
 From the top-level of the repo
 
@@ -87,3 +91,8 @@ If needed...
 ```
 sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
 ```
+
+### History
+
+- Originally created as a fork of https://github.com/hashicorp/learn-terraform-provision-eks-cluster, based on a Terraform EKS tutorial: https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks
+- the "hello-app" is derived from https://github.com/paulbouwer/hello-kubernetes
