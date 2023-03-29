@@ -1,8 +1,6 @@
 FROM node:14-alpine
 
-ARG IMAGE_CREATE_DATE
-ARG IMAGE_VERSION
-ARG IMAGE_SOURCE_REVISION
+ENV MESSAGE="Hello world!"
 
 # Create app directory
 RUN mkdir -p /usr/src/app

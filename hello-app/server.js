@@ -31,9 +31,8 @@ var handlerPathPrefix = (
 var namespace = process.env.KUBERNETES_NAMESPACE || '-';
 var podName = process.env.KUBERNETES_POD_NAME || os.hostname();
 var nodeName = process.env.KUBERNETES_NODE_NAME || '-';
-var nodeOS = os.type() + ' ' + os.release();
+var nodeOS = os.type() + ' ' + os.release() + ' ' + process.arch;
 var applicationVersion = JSON.parse(fs.readFileSync('package.json', 'utf8')).version;
-var containerImage = process.env.CONTAINER_IMAGE || 'paulbouwer/hello-kubernetes:' + applicationVersion
 
 logger.debug();
 logger.debug('Configuration');
@@ -64,7 +63,8 @@ app.get(handlerPathPrefix + '/', function (req, res) {
       namespace: namespace,
       pod: podName,
       node: nodeName + ' (' + nodeOS + ')',
-      renderPathPrefix: renderPathPrefix
+      renderPathPrefix: renderPathPrefix,
+      intercept: req.header("x-telepresence-intercept-id")
     });
 });
 
