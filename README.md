@@ -82,7 +82,8 @@ From the top-level of the repo
 
 1. `terraform destroy -auto-approve`
 2. Manually delete any load balancers associated with the cluster [in the web console](https://us-west-2.console.aws.amazon.com/ec2/home?region=us-west-2#LoadBalancers)
-3. `terraform destroy -auto-approve` again
+3. Manually delete the VPC associated with the cluster [in the web console](https://us-west-2.console.aws.amazon.com/vpc/home?region=us-west-2)
+4. `terraform destroy -auto-approve` again
 
 ### Clearing DNS cache
 
